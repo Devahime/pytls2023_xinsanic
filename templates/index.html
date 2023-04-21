@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+        <link rel="stylesheet" type="text/css" href="style.css">
+        <script src="../app.py"></script>
+    <title>BMI calculator</title>
+</head>
+
+<body>
+<h1>Body Mass Index calculator</h1>
+<form method="POST" action="/bmicalc">
+        <!-- idk whats wrong -->
+        <label for="gender">Gender (optional)</label><br><br>
+
+        <label for="male">Male</label>
+        <input type="checkbox" id="male" name="gender" value="male">
+
+        <label for="female">Female</label>
+        <input type="checkbox" id="female" name="gender" value="female">
+
+        <label for="other">Other</label>
+        <input type="checkbox" id="other" name="gender" value="other"><br><br>
+
+        <label for="Age">Age (optional)</label>
+        <input type="text" id="Age" name="Age"><br><br>
+
+        <label for="Height">Height (in cm)</label>
+        <input type="text" id="Height" name="Height"><br><br>
+
+        <label for="Weight">Weight (in kg)</label>
+        <input type="text" id="Weight" name="Weight"><br><br>
+
+        <input type="submit" value="What's my BMI?">
+    </form>
+
+</body>
+</html>

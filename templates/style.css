@@ -1,0 +1,44 @@
+html, body{
+    background: #d9c0f1;
+    margin: 0;
+    padding: 0;
+}
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+th, td {
+    text-align: left;
+    padding: 8px;
+    border-bottom: 1px solid #ddd;
+}
+h1 {
+    text-align: center;
+}
+input[type="text"] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: none;
+    border-bottom: 2px solid #ddd;
+}
+input[type="submit"] {
+    background-color: #ab71d3;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+input[type="submit"]:hover {
+    background-color: #3e084b;
+}
+.container {
+    padding: 16px;
+}
+.result {
+    margin-top: 16px;
+    font-weight: bold;
+}
