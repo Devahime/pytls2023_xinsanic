@@ -9,7 +9,8 @@
 
 <body>
 <h1>Body Mass Index calculator</h1>
-<form method="POST" action="/bmicalc">
+<div id="main">
+<form method="POST">
         <fieldset>
         <label>Gender</label><br><br>
         <label for="male">Male</label>
@@ -31,6 +32,10 @@
 
         <input type="submit" value="What's my BMI?">
     </form>
+    <div id="result">
+    Your result:{{bmi}}
+    </div>
 
+</div>
 </body>
 </html>
