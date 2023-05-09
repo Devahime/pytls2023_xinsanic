@@ -3,6 +3,7 @@ html, body{
     background: #d9c0f1;
     margin: 0;
     padding: 0;
+
 }
 table {
     border-collapse: collapse;
@@ -42,4 +43,9 @@ input[type="submit"]:hover {
 .result {
     margin-top: 16px;
     font-weight: bold;
+}
+
+form {
+    max-width: 300px;
+    margin: auto;
 }

@@ -11,17 +11,15 @@ def index():
 if __name__ == '__main__':
     app.run(debug=True, port=5000)
 
-@app.route('/home')
+@app.route('/home' ,methods=['GET', 'POST'])
 def home():
-    return render_template('index.html')
+    if request.method == 'POST':
+        gender = (request.form['gender'])
+        age = float(request.form['age'])
+        height = float(request.form['height'])
+        weight = float(request.form['weight'])
+        bmi = weight / ((height / 100) ** 2)
+    return render_template('index.html', bmi=bmi)
 
-@app.route('/bmicalc', methods=['POST'])
-def bmicalc():
-    gender = (request.form['gender'])
-    age = float(request.form['age'])
-    height = float(request.form['height'])
-    weight = float(request.form['weight'])
 
-    bmi = weight / ((height / 100) ** 2)
-    return str(bmi)
 
