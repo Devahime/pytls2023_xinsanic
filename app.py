@@ -1,8 +1,15 @@
 from pywebio.input import *
 from pywebio.output import *
-from flask import Flask, render_template, request
-import matplotlib.pyplot as plt
+from flask import Flask, render_template, request, send_file
+import os, sys
+import matplotlib
+from matplotlib import cm
+from matplotlib import pyplot as plt
 import numpy as np
+import csv
+
+
+
 
 app = Flask(__name__)
 
@@ -35,30 +42,33 @@ def home():
 
     return render_template('index.html', bmi=bmi, bmitype=bmitype)
 
-@app.route('/bmi-chart')
-def bmi_chart():
-    # Definujte seznam hmotností a výšek
-    hmotnosti = []  # v kg
-    vysky = []  # v metrech
+@app.route('/download-csv')
+def download_csv():
+    # Nastavte cestu k vašemu CSV souboru
+    csv_file = 'bmi.csv'
 
-    # Vypočítejte BMI pro každou hodnotu v seznamu
-    bmis = []
-    for hmotnost, vyska in zip(hmotnosti, vysky):
-        bmi = hmotnost / (vyska ** 2)
-        bmis.append(bmi)
+    # Nastavte název souboru pro stažení
+    download_filename = 'bmi.csv'
 
-    # Vytvořte sloupcový graf BMI
-    plt.bar(range(len(bmis)), bmis)
-    plt.xlabel('Person')
-    plt.ylabel('BMI')
-    plt.title('BMI graph')
+    return send_file(csv_file, as_attachment=True, attachment_filename=download_filename)
 
-    # Uložte graf do dočasného souboru
-    chart_path = 'static/bmi_chart.png'
-    plt.savefig(chart_path)
+data = [
+    ["Gender", 'Age', 'Weight', "Height"],
+]
 
-    # Zobrazte šablonu HTML obsahující graf
-    return render_template('bmi_chart.html', chart_path=chart_path)
+# Nastavte název CSV souboru
+csv_file = 'bmi.csv'
+
+# Otevřete CSV soubor pro zápis
+with open(csv_file, 'w', newline='') as file:
+    writer = csv.writer(file)
+
+    # Zapíšete data do CSV souboru
+    writer.writerows(data)
+
+print(f'CSV soubor "{csv_file}" byl vytvořen.')
+
+
 
 
 
