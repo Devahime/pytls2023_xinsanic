@@ -8,9 +8,6 @@ from matplotlib import pyplot as plt
 import numpy as np
 import csv
 
-
-
-
 app = Flask(__name__)
 
 @app.route("/")
