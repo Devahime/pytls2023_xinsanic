@@ -51,6 +51,7 @@ def download_csv():
 
     return send_file(csv_file, as_attachment=True, attachment_filename=download_filename)
 
+#pokus o csv
 data = [
     ["gender", 'age', 'height', "weight", "bmi"],
 ]
