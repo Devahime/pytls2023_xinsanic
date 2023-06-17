@@ -39,7 +39,6 @@ def home():
         elif bmi > 30:
             bmitype="Obese"
 
-
     return render_template('index.html', bmi=bmi, bmitype=bmitype)
 
 @app.route('/download-csv')
@@ -53,7 +52,7 @@ def download_csv():
     return send_file(csv_file, as_attachment=True, attachment_filename=download_filename)
 
 data = [
-    ["Gender", 'Age', 'Weight', "Height"],
+    ["gender", 'age', 'height', "weight", "bmi"],
 ]
 
 # Nastavte název CSV souboru
@@ -68,6 +67,9 @@ with open(csv_file, 'w', newline='') as file:
 
 print(f'CSV soubor "{csv_file}" byl vytvořen.')
 
+@app.route('/csv')
+def csv():
+    return render_template('csv.html')
 
 
 
