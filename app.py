@@ -1,6 +1,8 @@
 from pywebio.input import *
 from pywebio.output import *
 from flask import Flask, render_template, request
+import matplotlib.pyplot as plt
+import numpy as np
 
 app = Flask(__name__)
 
