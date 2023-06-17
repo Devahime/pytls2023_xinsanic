@@ -35,5 +35,34 @@ def home():
 
     return render_template('index.html', bmi=bmi, bmitype=bmitype)
 
+@app.route('/bmi-chart')
+def bmi_chart():
+    # Definujte seznam hmotností a výšek
+    hmotnosti = []  # v kg
+    vysky = []  # v metrech
+
+    # Vypočítejte BMI pro každou hodnotu v seznamu
+    bmis = []
+    for hmotnost, vyska in zip(hmotnosti, vysky):
+        bmi = hmotnost / (vyska ** 2)
+        bmis.append(bmi)
+
+    # Vytvořte sloupcový graf BMI
+    plt.bar(range(len(bmis)), bmis)
+    plt.xlabel('Person')
+    plt.ylabel('BMI')
+    plt.title('BMI graph')
+
+    # Uložte graf do dočasného souboru
+    chart_path = 'static/bmi_chart.png'
+    plt.savefig(chart_path)
+
+    # Zobrazte šablonu HTML obsahující graf
+    return render_template('bmi_chart.html', chart_path=chart_path)
+
+
+
+
+
 
 
