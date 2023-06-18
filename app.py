@@ -21,6 +21,7 @@ if __name__ == '__main__':
 def home():
     bmi=None
     bmitype=None
+    bmitext=None
     if request.method == 'POST':
         gender = (request.form['gender'])
         age = float(request.form['age'])
@@ -29,6 +30,7 @@ def home():
         bmi = weight / ((height / 100) ** 2)
         if bmi <= 18.59:
             bmitype="Underweight"
+            bmitext ="Being underweight can have negative implications for overall health, including reduced energy levels, weakened immune function, and an increased risk of bone and muscle issues. If you receive an underweight BMI result, it is important to consult with a healthcare professional who can provide personalized guidance and support to help you achieve a healthy weight and improve your overall well-being."
         elif bmi > 18.60 and bmi < 24.99:
             bmitype="Normal"
         elif bmi > 25 and bmi < 29.99:
@@ -36,38 +38,9 @@ def home():
         elif bmi > 30:
             bmitype="Obese"
 
-    return render_template('index.html', bmi=bmi, bmitype=bmitype)
+    return render_template('index.html', bmi=bmi, bmitype=bmitype, bmitext=bmitext)
 
-@app.route('/download-csv')
-def download_csv():
-    # Nastavte cestu k vašemu CSV souboru
-    csv_file = 'bmi.csv'
 
-    # Nastavte název souboru pro stažení
-    download_filename = 'bmi.csv'
-
-    return send_file(csv_file, as_attachment=True, attachment_filename=download_filename)
-
-#pokus o csv
-data = [
-    ["gender", 'age', 'height', "weight", "bmi"],
-]
-
-# Nastavte název CSV souboru
-csv_file = 'bmi.csv'
-
-# Otevřete CSV soubor pro zápis
-with open(csv_file, 'w', newline='') as file:
-    writer = csv.writer(file)
-
-    # Zapíšete data do CSV souboru
-    writer.writerows(data)
-
-print(f'CSV soubor "{csv_file}" byl vytvořen.')
-
-@app.route('/csv')
-def csv():
-    return render_template('csv.html')
 
 
 
