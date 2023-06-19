@@ -8,17 +8,17 @@
 </head>
 
 <body>
-<h1>Body Mass Index calculator</h1>
+    <h1>Body Mass Index calculator</h1>
 <div id="main">
-<form method="POST">
+    <form method="POST">
         <fieldset>
-        <label>Gender</label><br><br>
-        <label for="male">Male</label>
-        <input type="radio" id="male" name="gender" value="male">
-        <label for="female">Female</label>
-        <input type="radio" id="female" name="gender" value="female">
-        <label for="other">Other</label>
-        <input type="radio" id="other" name="gender" value="other"><br><br>
+            <label>Gender</label><br><br>
+            <label for="male">Male</label>
+            <input type="radio" id="male" name="gender" value="male">
+            <label for="female">Female</label>
+            <input type="radio" id="female" name="gender" value="female">
+            <label for="other">Other</label>
+            <input type="radio" id="other" name="gender" value="other"><br><br>
         </fieldset>
 
         <label for="Age">Age</label>
@@ -32,13 +32,29 @@
 
         <input type="submit" value="What's my BMI?">
     </form>
-    <p id="result" class="text">
-    Your result:   {{bmi}} = {{bmitype}}
-        <br>
-        What does it mean? {{bmitext}}
-    </p>
-
-
+     <div id="result">
+            {% if bmi %}
+            <h2>Your result</h2>
+            <p>
+                {{bmi}} = {{bmitype}}
+            </p>
+            <h2>What does it mean?</h2>
+            <p>
+                {{bmitext}}
+            </p>
+            {% if plot %}
+            <img src="../static/images/graph.png" />
+            {% endif %}
+            {% if past_quote %}
+            <p>{{past_quote}}</p>
+            {% endif %}
+            <a href="/download-csv">Download your past entries as CSV</a>
+            {% else %}
+            <p>
+                Submit the form for results.
+            </p>
+            {% endif %}
+        </div>
 </div>
 </body>
 </html>
