@@ -105,7 +105,7 @@ def gauge(value, ranges=None, labels=['LOW', 'MEDIUM', 'HIGH', 'VERY HIGH', 'EXT
     plots the arrow now
     """
 
-    angle = value / max * 360
+    angle = 180 - (value / max * 180)
 
     print(angle, value, mid_points)
 
