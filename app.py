@@ -1,7 +1,7 @@
 from pywebio.input import *
 from pywebio.output import *
 from flask import Flask, render_template, request, send_file
-import os, sys
+import os
 import matplotlib
 from matplotlib import cm
 from matplotlib import pyplot as plt
@@ -17,6 +17,24 @@ def index():
 if __name__ == '__main__':
     app.run(debug=True, port=5000)
 
+def write_entry(gender: str, age: int, height: float, weight: float, bmi: float):
+    write_header = os.path.exists("data.csv") == False
+
+    with open("data.csv", "a+") as file:
+        writer = csv.writer(file, delimiter=";",
+                            quotechar='"', quoting=csv.QUOTE_MINIMAL)
+        if write_header:
+            writer.writerow([
+                'gender',
+                'age',
+                'height',
+                'weight',
+                'bmi'
+            ])
+
+        writer.writerow([
+            gender, age, height, weight, bmi
+        ])
 @app.route('/home' ,methods=['GET', 'POST'])
 def home():
     bmi=None
