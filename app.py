@@ -39,7 +39,6 @@ def write_entry(gender: str, age: int, height: float, weight: float, bmi: float)
         ])
 
 def read_entries() -> list[dict[str, float | int | str]]:
-    #Read entries from data.csv
 
     entries: list[dict[str, float | int | str]] = []
 
