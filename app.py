@@ -39,12 +39,12 @@ def write_entry(gender: str, age: int, height: float, weight: float, bmi: float)
         ])
 
 def read_entries() -> list[dict[str, float | int | str]]:
-    # Read entries from data.csv
+    #Read entries from data.csv
 
     entries: list[dict[str, float | int | str]] = []
 
     if os.path.exists("data.csv"):
-        # No need for DictReader, we'll convert values anyway
+
         with open("data.csv", "r") as file:
             reader = csv.reader(file, delimiter=";")
 
